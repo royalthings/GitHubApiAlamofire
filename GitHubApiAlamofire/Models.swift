@@ -8,24 +8,13 @@
 
 import UIKit
 
-enum Model {
-    struct Requesr {
-        
-    }
-    struct Response {
-        var languageStr: String!
-        var idStr: String!
-        var nameStr: String!
-        var loginStr: String!
-        var descriptionStr: String?
-        
-        var link: String?
-    }
-    struct ViewModel {
-        var languageStr: String!
-        var idStr: String!
-        var nameStr: String!
-        var loginStr: String!
-        var descriptionStr: String?
-    }
+struct Models {
+    var languageStr: String?
+    var idStr: Int?
+    var nameStr: String?
+    var loginStr: String?
+    var descriptionStr: String?
+    
+    var linkStr: String?
 }
+

@@ -11,93 +11,54 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-
-
 class ViewController: UIViewController {
 
-    
     @IBOutlet weak var tableView: UITableView!
-    
-    var reposData = [Model.ViewModel]()
-    var responses = [Model.Response]()
-    
-    
+
+    var responses2 = [Models]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let url = "https://api.github.com/users/royalthings/repos"
-        let utilityQueue = DispatchQueue.global(qos: .utility)
-        
-        Alamofire.request(url).validate(statusCode: 200..<300).validate(contentType: ["application/json"]).responseJSON(queue: utilityQueue) { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-                let json = JSON(value)
-                for i in 0...json.count-1 {
-                    
-                    var currentResponse = Model.Response()
-                    
-                    guard let language = json[i]["language"].string else { break }
-                    guard let id = json[i]["id"].int else { break }
 
-                    guard let name = json[i]["name"].string else { break }
-
-                    guard let login = json[i]["owner"]["login"].string else { break }
-
-                    let description = json[i]["description"].string
-
-                    guard let link = json[i]["url"].string else { break }
-                    
-                    currentResponse.languageStr = language
-                    currentResponse.idStr = "\(id)"
-                    currentResponse.nameStr = name
-                    currentResponse.loginStr = login
-                    currentResponse.descriptionStr = description
-                    currentResponse.link = link
-
-                    self.responses.append(currentResponse)
-
-                    print(currentResponse.languageStr!)
-//                    print("id: \(json[i]["id"])")
-//                    print("name: \(json[i]["name"])")
-//                    print("login: \(json[i]["owner"]["login"])")
-//                    print("description: \(json[i]["description"])")
-                    print("-----------------")
-                }
-            case .failure(let error):
-                print(error)
-            }
-            
-        }
         
         tableView.dataSource = self
         tableView.delegate = self
         
-    }
+        tableView.reloadData()
         
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reposData.count
+        return responses2.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-  
-        
-        
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! RepoTableViewCell
+        configCell(cell: cell, for: indexPath)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let item = responses2[indexPath.row]
+        let objWeb = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
+        objWeb.srtURL = item.linkStr!
+        self.navigationController?.pushViewController(objWeb, animated: true)
     }
     
-    
+    private func configCell(cell: RepoTableViewCell, for indexPath: IndexPath) {
+        let item = responses2[indexPath.row]
+        
+        if let language = item.languageStr, let id = item.idStr, let name = item.nameStr, let login = item.loginStr, let description = item.descriptionStr {
+            cell.languageLable?.text = "Language: \(language)"
+            cell.idLable?.text = "ID: \(id)"
+            cell.nameLable?.text = "Name: \(name)"
+            cell.loginLable?.text = "Login: \(login)"
+            cell.descriptionLable?.text = "Description: \(description)"
+        }
+
+    }
+
 }
-
-
-
-
