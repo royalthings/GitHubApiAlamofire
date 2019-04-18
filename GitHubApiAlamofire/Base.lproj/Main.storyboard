@@ -78,10 +78,26 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i17-Pq-lSi">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
+                                    <barButtonItem systemItem="rewind" id="YLR-MI-qtb">
+                                        <connections>
+                                            <action selector="goBackAction:" destination="0to-gj-7i1" id="PuC-xx-omS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="PBk-3o-tCO"/>
+                                    <barButtonItem systemItem="fastForward" id="TZC-1u-EhV">
+                                        <connections>
+                                            <action selector="goForwardAction:" destination="0to-gj-7i1" id="rWc-Zp-Rgv"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WYY-LK-XKj"/>
                                     <barButtonItem id="5Me-3e-G7r"/>
                                     <barButtonItem systemItem="action" id="jiY-ze-Fbu"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iLa-4e-CbC"/>
+                                    <barButtonItem systemItem="refresh" id="Ea6-e4-LvZ">
+                                        <connections>
+                                            <action selector="refreshAction:" destination="0to-gj-7i1" id="KKS-mT-2nF"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8G-1X-Zyd">
@@ -106,6 +122,8 @@
                         <viewLayoutGuide key="safeArea" id="B9b-HF-UON"/>
                     </view>
                     <connections>
+                        <outlet property="goBackItem" destination="YLR-MI-qtb" id="b7a-aA-kgw"/>
+                        <outlet property="goForwardItem" destination="TZC-1u-EhV" id="3UP-B9-oiI"/>
                         <outlet property="webView" destination="T8G-1X-Zyd" id="Kyl-po-HKx"/>
                     </connections>
                 </viewController>
