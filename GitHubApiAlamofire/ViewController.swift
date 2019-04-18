@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -44,7 +43,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = responses2[indexPath.row]
         let objWeb = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
-        objWeb.srtURL = item.linkStr!
+        objWeb.strURL = item.linkStr!
         self.navigationController?.pushViewController(objWeb, animated: true)
     }
     

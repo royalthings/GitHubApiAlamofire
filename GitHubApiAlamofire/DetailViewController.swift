@@ -13,11 +13,14 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
 
     
     @IBOutlet weak var webView: WKWebView!
-    var srtURL = ""
+    var strURL = ""
     
     
     @IBOutlet weak var goBackItem: UIBarButtonItem!
     @IBOutlet weak var goForwardItem: UIBarButtonItem!
+    
+    @IBOutlet weak var shareItem: UIBarButtonItem!
+    
     
     let application = UIApplication.shared
     
@@ -28,12 +31,10 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
         
         webView.navigationDelegate = self
 
-        if let url = URL(string: srtURL) {
+        if let url = URL(string: strURL) {
             let request = URLRequest(url: url)
             webView.load(request)
         }
-        
-        
     }
     
     //MARK: - WKNavigationDelegate
@@ -52,8 +53,7 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
             self.goForwardItem.isEnabled = true
         }
     }
-    
-    
+
     @IBAction func goBackAction(_ sender: Any) {
         if webView.canGoBack {
             webView.goBack()
@@ -68,6 +68,15 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
     
     @IBAction func refreshAction(_ sender: Any) {
         webView.reload()
+    }
+    
+    @IBAction func shareAction(_ sender: Any) {
+        let text = "My repository:"
+        let repoWebSite = self.strURL
+        let shareAll = [text, repoWebSite]
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
 

@@ -91,7 +91,11 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WYY-LK-XKj"/>
                                     <barButtonItem id="5Me-3e-G7r"/>
-                                    <barButtonItem systemItem="action" id="jiY-ze-Fbu"/>
+                                    <barButtonItem systemItem="action" id="jiY-ze-Fbu">
+                                        <connections>
+                                            <action selector="shareAction:" destination="0to-gj-7i1" id="H5t-CT-awX"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iLa-4e-CbC"/>
                                     <barButtonItem systemItem="refresh" id="Ea6-e4-LvZ">
                                         <connections>
@@ -124,6 +128,7 @@
                     <connections>
                         <outlet property="goBackItem" destination="YLR-MI-qtb" id="b7a-aA-kgw"/>
                         <outlet property="goForwardItem" destination="TZC-1u-EhV" id="3UP-B9-oiI"/>
+                        <outlet property="shareItem" destination="jiY-ze-Fbu" id="s3a-8d-Zdj"/>
                         <outlet property="webView" destination="T8G-1X-Zyd" id="Kyl-po-HKx"/>
                     </connections>
                 </viewController>

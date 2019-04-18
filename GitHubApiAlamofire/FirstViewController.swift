@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UITextFieldDelegate {
 
     let gitUrl = "https://api.github.com/users/"
     
@@ -32,8 +32,7 @@ class FirstViewController: UIViewController {
             print("Enter your profile name!")
         } else {
             let gitProfile = gitUrl + profileTextField.text! + "/repos"
-            print(gitProfile)
-            
+                        
             guard canOpenURL(string: gitProfile) else { return }
          
             Alamofire.request(gitProfile).responseJSON { response in
@@ -51,7 +50,6 @@ class FirstViewController: UIViewController {
                     self.responses.append(item)
                 }
                 DispatchQueue.main.async {
-                    print(self.responses)
                     let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as! ViewController
                     destinationVC.responses2 = self.responses
                     self.navigationController?.pushViewController(destinationVC, animated: true)
@@ -70,6 +68,13 @@ class FirstViewController: UIViewController {
         let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
         let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regEx])
         return predicate.evaluate(with:string)
+    }
+    
+    //MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.profileTextField.resignFirstResponder()
+        return true
     }
 
 }
