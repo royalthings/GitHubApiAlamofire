@@ -14,13 +14,11 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
     
     @IBOutlet weak var webView: WKWebView!
     var strURL = ""
-    
-    
+    fileprivate var errorURL = "https://www.cossa.ru/upload/iblock/58f/big_1111448962252_1448454582.jpg"
+
     @IBOutlet weak var goBackItem: UIBarButtonItem!
     @IBOutlet weak var goForwardItem: UIBarButtonItem!
-    
     @IBOutlet weak var shareItem: UIBarButtonItem!
-    
     
     let application = UIApplication.shared
     
@@ -34,6 +32,10 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
         if let url = URL(string: strURL) {
             let request = URLRequest(url: url)
             webView.load(request)
+        } else {
+            guard let errorPage = URL(string: errorURL) else { return }
+            let errorRequest = URLRequest(url: errorPage)
+            webView.load(errorRequest)
         }
     }
     
@@ -54,6 +56,8 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
+    //MARK: - Actions
+    
     @IBAction func goBackAction(_ sender: Any) {
         if webView.canGoBack {
             webView.goBack()

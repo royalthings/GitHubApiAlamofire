@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3215871122739C7D00A63441 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3215871022739C7D00A63441 /* Empty.swift */; };
 		321FA4F622636AE7000909A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321FA4F522636AE7000909A8 /* SwiftyJSON.framework */; };
 		3221C74D226071C900CBB966 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C74C226071C900CBB966 /* DetailViewController.swift */; };
 		3221C74F2260748100CBB966 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C74E2260748100CBB966 /* RepoTableViewCell.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3215871022739C7D00A63441 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		321FA4F522636AE7000909A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3221C74C226071C900CBB966 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3221C74E2260748100CBB966 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				323623C9225FF52D0097C33D /* LaunchScreen.storyboard */,
 				323623CC225FF52D0097C33D /* Info.plist */,
 				3221C7502260771F00CBB966 /* Models.swift */,
+				3215871022739C7D00A63441 /* Empty.swift */,
 			);
 			path = GitHubApiAlamofire;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				323623C1225FF52B0097C33D /* AppDelegate.swift in Sources */,
 				322D922C2265B5EC002CEC3E /* FirstViewController.swift in Sources */,
 				3221C74F2260748100CBB966 /* RepoTableViewCell.swift in Sources */,
+				3215871122739C7D00A63441 /* Empty.swift in Sources */,
 				3221C7512260771F00CBB966 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

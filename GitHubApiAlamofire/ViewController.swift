@@ -8,8 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
-import Alamofire_SwiftyJSON
 
 class ViewController: UIViewController {
 
@@ -19,12 +17,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        tableView.reloadData()
-        
+      
     }
 }
 
@@ -35,28 +28,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! RepoTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as? RepoTableViewCell else { return UITableViewCell() }
         configCell(cell: cell, for: indexPath)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = responses2[indexPath.row]
-        let objWeb = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
-        objWeb.strURL = item.linkStr!
-        self.navigationController?.pushViewController(objWeb, animated: true)
+        guard let objWeb = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController else { return }
+        
+        let itemLink = item.linkStr
+        objWeb.strURL = itemLink
+        navigationController?.pushViewController(objWeb, animated: true)
     }
     
     private func configCell(cell: RepoTableViewCell, for indexPath: IndexPath) {
         let item = responses2[indexPath.row]
-        
-        if let language = item.languageStr, let id = item.idStr, let name = item.nameStr, let login = item.loginStr, let description = item.descriptionStr {
-            cell.languageLable?.text = "Language: \(language)"
-            cell.idLable?.text = "ID: \(id)"
-            cell.nameLable?.text = "Name: \(name)"
-            cell.loginLable?.text = "Login: \(login)"
-            cell.descriptionLable?.text = "Description: \(description)"
-        }
+
+        cell.languageLable?.text = "Language: \(item.languageStr)"
+        cell.idLable?.text = "ID: \(item.idStr)"
+        cell.nameLable?.text = "Name: \(item.nameStr)"
+        cell.createdAtLable?.text = "Create at: \(item.createdAtStr)"
+        cell.descriptionLable?.text = "Description: \(item.descriptionStr)"
 
     }
 

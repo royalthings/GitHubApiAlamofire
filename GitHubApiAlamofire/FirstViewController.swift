@@ -11,7 +11,7 @@ import Alamofire
 
 class FirstViewController: UIViewController, UITextFieldDelegate {
 
-    let gitUrl = "https://api.github.com/users/"
+    fileprivate let gitUrl = "https://api.github.com/users/"
     
     @IBOutlet weak var profileTextField: UITextField!
 
@@ -22,43 +22,47 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         profileTextField.becomeFirstResponder()
     
     }
 
     @IBAction func myButtonPressed(_ sender: Any) {
         
-        if (profileTextField.text?.isEmpty)! {
+        if profileTextField.text == "" {
             print("Enter your profile name!")
         } else {
             let gitProfile = gitUrl + profileTextField.text! + "/repos"
-                        
+            
+            profileTextField.text = ""
+            responses.removeAll()
+
             guard canOpenURL(string: gitProfile) else { return }
-         
+
             Alamofire.request(gitProfile).responseJSON { response in
-                guard response.result.isSuccess else {
-                    print("Ошибка при запросе данных \(String(describing: response.result.error))")
-                    return
+                
+                switch response.result {
+                case .success(let value):
+                    guard let posts = Models.getArray(from: value) else { return }
+                    print(posts)
+    
+                    DispatchQueue.main.async {
+    
+                        let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as! ViewController
+                        destinationVC.responses2 = posts
+                        self.navigationController?.pushViewController(destinationVC, animated: true)
+                    }
+                    
+                case .failure(let error):
+                    print(error)
                 }
-                 guard let arrayOfItem = response.result.value as? [[String: AnyObject]]
-                    else {
-                        print("Не могу перевести в массив")
-                        return
-                }
-                for itm in arrayOfItem {
-                    let item = Models(languageStr: itm["language"] as? String, idStr: itm["id"] as? Int, nameStr: itm["name"] as? String, loginStr: itm["owner"]!["login"] as? String, descriptionStr: itm["description"] as? String, linkStr: itm["html_url"] as? String)
-                    self.responses.append(item)
-                }
-                DispatchQueue.main.async {
-                    let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as! ViewController
-                    destinationVC.responses2 = self.responses
-                    self.navigationController?.pushViewController(destinationVC, animated: true)
-                }
+
             }
-            self.profileTextField.text = ""
-            self.responses.removeAll()
         }
     }
+
+    
+
 
     func canOpenURL(string: String?) -> Bool {
         guard let urlString = string else { return false }
@@ -78,3 +82,5 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     }
 
 }
+
+

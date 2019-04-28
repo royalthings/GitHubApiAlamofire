@@ -191,7 +191,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boC-yU-L7p">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boC-yU-L7p">
                                                     <rect key="frame" x="15" y="98" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -224,14 +224,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="createdAtLable" destination="boC-yU-L7p" id="7uL-BO-bgy"/>
                                             <outlet property="descriptionLable" destination="jjS-gY-S8k" id="TiD-Qu-4d6"/>
                                             <outlet property="idLable" destination="65J-YB-L3S" id="9Dj-wm-ebp"/>
                                             <outlet property="languageLable" destination="QgG-Kw-8an" id="jU1-dJ-DKf"/>
-                                            <outlet property="loginLable" destination="boC-yU-L7p" id="3OT-d3-GYY"/>
                                             <outlet property="nameLable" destination="m7s-nZ-iEz" id="A3S-6t-8KG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ezy-l2-xRt" id="5uH-9e-zHk"/>
+                                    <outlet property="delegate" destination="ezy-l2-xRt" id="fXT-oW-P9g"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

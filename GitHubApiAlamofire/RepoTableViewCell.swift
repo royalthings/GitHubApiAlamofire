@@ -13,12 +13,8 @@ class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var languageLable: UILabel?
     @IBOutlet weak var idLable: UILabel?
     @IBOutlet weak var nameLable: UILabel?
-    @IBOutlet weak var loginLable: UILabel?
+    @IBOutlet weak var createdAtLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
+
 
 }
