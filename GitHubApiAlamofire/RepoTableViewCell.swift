@@ -15,6 +15,4 @@ class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLable: UILabel?
     @IBOutlet weak var createdAtLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
-
-
 }

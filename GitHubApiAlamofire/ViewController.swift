@@ -13,18 +13,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var responses2 = [Models]()
+    var responses = [Models]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return responses2.count
+        return responses.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,7 +33,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = responses2[indexPath.row]
+        let item = responses[indexPath.row]
         guard let objWeb = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController else { return }
         
         let itemLink = item.linkStr
@@ -43,7 +42,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func configCell(cell: RepoTableViewCell, for indexPath: IndexPath) {
-        let item = responses2[indexPath.row]
+        let item = responses[indexPath.row]
 
         cell.languageLable?.text = "Language: \(item.languageStr)"
         cell.idLable?.text = "ID: \(item.idStr)"

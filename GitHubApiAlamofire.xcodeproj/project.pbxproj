@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3215871122739C7D00A63441 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3215871022739C7D00A63441 /* Empty.swift */; };
 		321FA4F622636AE7000909A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321FA4F522636AE7000909A8 /* SwiftyJSON.framework */; };
 		3221C74D226071C900CBB966 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C74C226071C900CBB966 /* DetailViewController.swift */; };
 		3221C74F2260748100CBB966 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C74E2260748100CBB966 /* RepoTableViewCell.swift */; };
@@ -18,11 +17,11 @@
 		323623C6225FF52B0097C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323623C4225FF52B0097C33D /* Main.storyboard */; };
 		323623C8225FF52D0097C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323623C7225FF52D0097C33D /* Assets.xcassets */; };
 		323623CB225FF52D0097C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323623C9225FF52D0097C33D /* LaunchScreen.storyboard */; };
+		329049E322798FE9002996DE /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329049E222798FE9002996DE /* APIManager.swift */; };
 		A7243708B9F5C6F8AAE64E8D /* Pods_GitHubApiAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D76A4D8E9DF4E69EF4A58AC /* Pods_GitHubApiAlamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3215871022739C7D00A63441 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		321FA4F522636AE7000909A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3221C74C226071C900CBB966 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3221C74E2260748100CBB966 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -35,6 +34,7 @@
 		323623C7225FF52D0097C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		323623CA225FF52D0097C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		323623CC225FF52D0097C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		329049E222798FE9002996DE /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		3D76A4D8E9DF4E69EF4A58AC /* Pods_GitHubApiAlamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubApiAlamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DDA58EFDF233B8A7C2CB105 /* Pods-GitHubApiAlamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApiAlamofire.release.xcconfig"; path = "Target Support Files/Pods-GitHubApiAlamofire/Pods-GitHubApiAlamofire.release.xcconfig"; sourceTree = "<group>"; };
 		DC086EB43079B2CAF53B1CA1 /* Pods-GitHubApiAlamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApiAlamofire.debug.xcconfig"; path = "Target Support Files/Pods-GitHubApiAlamofire/Pods-GitHubApiAlamofire.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,13 +87,13 @@
 				322D922B2265B5EC002CEC3E /* FirstViewController.swift */,
 				323623C2225FF52B0097C33D /* ViewController.swift */,
 				3221C74C226071C900CBB966 /* DetailViewController.swift */,
-				323623C7225FF52D0097C33D /* Assets.xcassets */,
 				3221C74E2260748100CBB966 /* RepoTableViewCell.swift */,
+				329049E222798FE9002996DE /* APIManager.swift */,
+				3221C7502260771F00CBB966 /* Models.swift */,
+				323623C7225FF52D0097C33D /* Assets.xcassets */,
 				323623C4225FF52B0097C33D /* Main.storyboard */,
 				323623C9225FF52D0097C33D /* LaunchScreen.storyboard */,
 				323623CC225FF52D0097C33D /* Info.plist */,
-				3221C7502260771F00CBB966 /* Models.swift */,
-				3215871022739C7D00A63441 /* Empty.swift */,
 			);
 			path = GitHubApiAlamofire;
 			sourceTree = "<group>";
@@ -231,12 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329049E322798FE9002996DE /* APIManager.swift in Sources */,
 				3221C74D226071C900CBB966 /* DetailViewController.swift in Sources */,
 				323623C3225FF52B0097C33D /* ViewController.swift in Sources */,
 				323623C1225FF52B0097C33D /* AppDelegate.swift in Sources */,
 				322D922C2265B5EC002CEC3E /* FirstViewController.swift in Sources */,
 				3221C74F2260748100CBB966 /* RepoTableViewCell.swift in Sources */,
-				3215871122739C7D00A63441 /* Empty.swift in Sources */,
 				3221C7512260771F00CBB966 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
