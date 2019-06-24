@@ -10,7 +10,7 @@
 		321FA4F622636AE7000909A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321FA4F522636AE7000909A8 /* SwiftyJSON.framework */; };
 		3221C74D226071C900CBB966 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C74C226071C900CBB966 /* DetailViewController.swift */; };
 		3221C74F2260748100CBB966 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C74E2260748100CBB966 /* RepoTableViewCell.swift */; };
-		3221C7512260771F00CBB966 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C7502260771F00CBB966 /* Models.swift */; };
+		3221C7512260771F00CBB966 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221C7502260771F00CBB966 /* DataManager.swift */; };
 		322D922C2265B5EC002CEC3E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322D922B2265B5EC002CEC3E /* FirstViewController.swift */; };
 		323623C1225FF52B0097C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323623C0225FF52B0097C33D /* AppDelegate.swift */; };
 		323623C3225FF52B0097C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323623C2225FF52B0097C33D /* ViewController.swift */; };
@@ -25,7 +25,7 @@
 		321FA4F522636AE7000909A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3221C74C226071C900CBB966 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3221C74E2260748100CBB966 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
-		3221C7502260771F00CBB966 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		3221C7502260771F00CBB966 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		322D922B2265B5EC002CEC3E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		323623BD225FF52B0097C33D /* GitHubApiAlamofire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubApiAlamofire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		323623C0225FF52B0097C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				3221C74C226071C900CBB966 /* DetailViewController.swift */,
 				3221C74E2260748100CBB966 /* RepoTableViewCell.swift */,
 				329049E222798FE9002996DE /* APIManager.swift */,
-				3221C7502260771F00CBB966 /* Models.swift */,
+				3221C7502260771F00CBB966 /* DataManager.swift */,
 				323623C7225FF52D0097C33D /* Assets.xcassets */,
 				323623C4225FF52B0097C33D /* Main.storyboard */,
 				323623C9225FF52D0097C33D /* LaunchScreen.storyboard */,
@@ -237,7 +237,7 @@
 				323623C1225FF52B0097C33D /* AppDelegate.swift in Sources */,
 				322D922C2265B5EC002CEC3E /* FirstViewController.swift in Sources */,
 				3221C74F2260748100CBB966 /* RepoTableViewCell.swift in Sources */,
-				3221C7512260771F00CBB966 /* Models.swift in Sources */,
+				3221C7512260771F00CBB966 /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

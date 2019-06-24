@@ -15,12 +15,12 @@ class APIManager {
 
     struct Path {
 
-        static var environments: String = ""
+        static let supplementation: String = "users/"
     }
 
     static let shared = APIManager()
 
-    fileprivate let baseURL: String = "https://api.github.com/users/"
+    fileprivate let baseURL: String = "https://api.github.com/"
 
     fileprivate var headers: HTTPHeaders = [
         "Content-Type": "application/json"
@@ -34,10 +34,13 @@ class APIManager {
 
     fileprivate func performRequest(_ path: String, method: HTTPMethod = .get, parameters: Parameters = [:], _ completion: @escaping Closure) {
         let url = baseURL + path
-        Alamofire.request(url, method: method,parameters: parameters, headers: headers).responseJSON { response in
+        let utilityQueue = DispatchQueue.global(qos: .utility)
+        Alamofire.request(url, method: method,parameters: parameters, headers: headers).responseJSON(queue: utilityQueue) { response in
             switch response.result {
             case .success:
-                completion(response.result.value, nil)
+                DispatchQueue.main.async {
+                    completion(response.result.value, nil)
+                }
             case .failure(let error):
                 completion(nil, error)
                 print(error)
@@ -45,10 +48,10 @@ class APIManager {
         }
     }
 
-    // MARK: - method
+    // MARK: - get users
 
-    func method(forRepository repository: String, completion: @escaping Closure) {
-        let parameters = ["repo": repository]
-        performRequest(Path.environments, method: .get, parameters: parameters, completion)
+    func users(repositories: String, completion: @escaping Closure) {
+        let parameters = ["repo": repositories]
+        performRequest(repositories, method: .get, parameters: parameters, completion)
     }
 }

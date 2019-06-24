@@ -10,9 +10,10 @@ import UIKit
 
 class RepoTableViewCell: UITableViewCell {
 
+    //MARK: - Outlet
     @IBOutlet weak var languageLable: UILabel?
     @IBOutlet weak var idLable: UILabel?
     @IBOutlet weak var nameLable: UILabel?
-    @IBOutlet weak var createdAtLable: UILabel!
-    @IBOutlet weak var descriptionLable: UILabel!
+    @IBOutlet weak var createdAtLable: UILabel?
+    @IBOutlet weak var descriptionLable: UILabel?
 }

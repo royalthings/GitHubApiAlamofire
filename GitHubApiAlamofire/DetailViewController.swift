@@ -12,16 +12,14 @@ import WebKit
 class DetailViewController: UIViewController, WKNavigationDelegate {
 
     
-    @IBOutlet weak var webView: WKWebView!
     var strURL = ""
-    fileprivate var errorURL = "https://www.cossa.ru/upload/iblock/58f/big_1111448962252_1448454582.jpg"
+    fileprivate let errorURL = "https://www.cossa.ru/upload/iblock/58f/big_1111448962252_1448454582.jpg"
 
+    //MARK: - Outlet
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var goBackItem: UIBarButtonItem!
     @IBOutlet weak var goForwardItem: UIBarButtonItem!
     @IBOutlet weak var shareItem: UIBarButtonItem!
-    
-    let application = UIApplication.shared
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -42,17 +40,19 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
     //MARK: - WKNavigationDelegate
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        application.isNetworkActivityIndicatorVisible = true
-        self.goBackItem.isEnabled = false
-        self.goForwardItem.isEnabled = false
+        AppDelegate().appDelegate().isNetworkActivityIndicatorVisible = true
+        
+        //application.isNetworkActivityIndicatorVisible = true
+        goBackItem.isEnabled = false
+        goForwardItem.isEnabled = false
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        application.isNetworkActivityIndicatorVisible = false
+        AppDelegate().appDelegate().isNetworkActivityIndicatorVisible = false
         if webView.canGoBack {
-            self.goBackItem.isEnabled = true
+            goBackItem.isEnabled = true
         } else if webView.canGoForward {
-            self.goForwardItem.isEnabled = true
+            goForwardItem.isEnabled = true
         }
     }
 
@@ -75,13 +75,17 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
     }
     
     @IBAction func shareAction(_ sender: Any) {
-        let text = "My repository:"
-        let repoWebSite = self.strURL
+        let text = "My repository:".localized()
+        let repoWebSite = strURL
         let shareAll = [text, repoWebSite]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
+        present(activityViewController, animated: true, completion: nil)
     }
-    
 
+}
+extension String {
+    func localized(withComment comment: String? = nil) -> String {
+        return NSLocalizedString(self, comment: comment ?? "")
+    }
 }

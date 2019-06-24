@@ -9,44 +9,51 @@
 import UIKit
 import Alamofire
 
-class FirstViewController: UIViewController, UITextFieldDelegate {
-
+class FirstViewController: UIViewController {
+    //MARK: - Outlet
     @IBOutlet weak var profileTextField: UITextField!
     @IBOutlet weak var myButton: UIButton!
-    
-    typealias Closure = (_ response: Any?, _ error: Error?) -> Void
 
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTextField.becomeFirstResponder()
     }
 
+    //MARK: - Action
     @IBAction func myButtonPressed(_ sender: Any) {
-
-        if profileTextField.text == "" {
-            print("Enter your profile name!")
+        guard let text = profileTextField.text else { return }
+        if text.isEmpty {
+            alertMassage(message: "Enter your profile name!")
         } else {
-            APIManager.Path.environments = profileTextField.text! + "/repos"
-            let path = APIManager.Path.environments
+            let path = APIManager.Path.supplementation + text + "/repos"
             profileTextField.text = ""
-            APIManager.shared.method(forRepository: path) { (response, error) in
+            APIManager.shared.users(repositories: path) { [weak self] (response, error) in
                 
-                guard let posts = Models.getArray(from: response as Any) else { return }
-                DispatchQueue.main.async {
-                    let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as! ViewController
-                    destinationVC.responses = posts
-                    self.navigationController?.pushViewController(destinationVC, animated: true)
-                }
+                guard let posts = DataManager.array(fromArray: response as Any) else { return }
+                
+                let destinationVC = self?.storyboard?.instantiateViewController(withIdentifier: "repositories") as! ViewController
+                destinationVC.responses = posts
+                self?.navigationController?.pushViewController(destinationVC, animated: true)
+                
             }
         }
     }
+    //MARK: - Alert massage
+    fileprivate func alertMassage(message: String) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
-   
-    //MARK: - UITextFieldDelegate
+}
+//MARK: - UITextFieldDelegate
+extension FirstViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.profileTextField.resignFirstResponder()
+        profileTextField.resignFirstResponder()
         return true
     }
-  
 }

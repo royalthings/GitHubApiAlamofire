@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var responses = [Models]()
+    var responses = [DataManager]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = responses[indexPath.row]
-        guard let objWeb = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController else { return }
+        guard let objWeb = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController else { return }
         
         let itemLink = item.linkStr
         objWeb.strURL = itemLink

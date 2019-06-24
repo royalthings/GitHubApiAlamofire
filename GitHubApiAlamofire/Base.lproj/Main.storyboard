@@ -28,11 +28,11 @@
                                 <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-zw-vJj">
-                                <rect key="frame" x="136" y="192" width="103" height="40"/>
+                                <rect key="frame" x="127.5" y="192" width="120" height="40"/>
                                 <color key="backgroundColor" red="0.52156862745098043" green="0.7803921568627451" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CF7-yu-Rjk"/>
-                                    <constraint firstAttribute="width" constant="103" id="Sdw-wd-VpQ"/>
+                                    <constraint firstAttribute="width" constant="120" id="ejA-0l-eMr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                 <state key="normal" title="Get repo">
@@ -63,7 +63,7 @@
                     <connections>
                         <outlet property="myButton" destination="zbV-zw-vJj" id="3dO-5X-3cK"/>
                         <outlet property="profileTextField" destination="Bi0-ca-6Ze" id="mli-rc-Pb8"/>
-                        <segue destination="ezy-l2-xRt" kind="show" identifier="secondVC" id="FgY-c7-SRp"/>
+                        <segue destination="ezy-l2-xRt" kind="show" identifier="repositories" id="FgY-c7-SRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -160,7 +160,7 @@
         <!--View Controller-->
         <scene sceneID="r7A-as-VNR">
             <objects>
-                <viewController storyboardIdentifier="secondVC" id="ezy-l2-xRt" customClass="ViewController" customModule="GitHubApiAlamofire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="repositories" id="ezy-l2-xRt" customClass="ViewController" customModule="GitHubApiAlamofire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFI-D2-EZy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,7 +266,7 @@
                     <navigationItem key="navigationItem" id="2yh-Cg-iFT"/>
                     <connections>
                         <outlet property="tableView" destination="8fj-m1-FpQ" id="urh-2i-Vmx"/>
-                        <segue destination="0to-gj-7i1" kind="show" id="MUF-rl-yzG"/>
+                        <segue destination="0to-gj-7i1" kind="show" identifier="detail" id="MUF-rl-yzG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzx-2J-j3S" sceneMemberID="firstResponder"/>
