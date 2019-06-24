@@ -7,7 +7,11 @@
 		<key>GitHubApiAlamofire.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>0</integer>
+=======
+			<integer>1</integer>
+>>>>>>> 26210444103af01afc10a32abca4051d15df848a
 		</dict>
 	</dict>
 </dict>

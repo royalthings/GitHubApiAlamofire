@@ -12,7 +12,11 @@
 		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>1</integer>
+=======
+			<integer>0</integer>
+>>>>>>> 26210444103af01afc10a32abca4051d15df848a
 		</dict>
 		<key>Pods-GitHubApiAlamofire.xcscheme_^#shared#^_</key>
 		<dict>
